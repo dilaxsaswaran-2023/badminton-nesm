@@ -1,0 +1,51 @@
+[
+  {
+    "id": "mens-singles",
+    "title": "Men's Singles",
+    "shortTitle": "MS",
+    "format": "singles",
+    "file": "/data/mens-singles.csv"
+  },
+  {
+    "id": "mens-doubles",
+    "title": "Men's Doubles",
+    "shortTitle": "MD",
+    "format": "doubles",
+    "file": "/data/mens-doubles.csv"
+  },
+  {
+    "id": "men-over-40-singles",
+    "title": "Men Over 40 – Singles",
+    "shortTitle": "M40S",
+    "format": "singles",
+    "file": "/data/men-over-40-singles.csv"
+  },
+  {
+    "id": "men-over-40-doubles",
+    "title": "Men Over 40 – Doubles",
+    "shortTitle": "M40D",
+    "format": "doubles",
+    "file": "/data/men-over-40-doubles.csv"
+  },
+  {
+    "id": "womens-singles",
+    "title": "Women's Singles",
+    "shortTitle": "WS",
+    "format": "singles",
+    "file": "/data/womens-singles.csv"
+  },
+  {
+    "id": "womens-doubles",
+    "title": "Women's Doubles",
+    "shortTitle": "WD",
+    "format": "doubles",
+    "file": "/data/womens-doubles.csv"
+  },
+  {
+    "id": "mixed-doubles",
+    "title": "Mixed Doubles",
+    "shortTitle": "XD",
+    "format": "doubles",
+    "file": "/data/mixed-doubles.csv"
+  }
+]
