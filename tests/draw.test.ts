@@ -22,9 +22,18 @@ describe("knockout draw logic", () => {
       readFileSync(join(dataDirectory, "categories.json"), "utf8"),
     ) as Category[];
     expect(categories).toHaveLength(7);
+    const expectedCounts: Record<string, number> = {
+      "mens-singles": 31,
+      "mens-doubles": 16,
+      "men-over-40-singles": 10,
+      "men-over-40-doubles": 5,
+      "womens-singles": 5,
+      "womens-doubles": 5,
+      "mixed-doubles": 10,
+    };
     for (const category of categories) {
       const csv = readFileSync(join(process.cwd(), "public", category.file), "utf8");
-      expect(parseEntrants(csv, category).length).toBeGreaterThanOrEqual(2);
+      expect(parseEntrants(csv, category)).toHaveLength(expectedCounts[category.id]);
     }
   });
 

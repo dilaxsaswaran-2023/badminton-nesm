@@ -179,7 +179,7 @@ export function TournamentDraw() {
                   </div>
                   <p>Before publication, confirm the supplied spelling and identity notes:</p>
                   <ul>
-                    <li><b>Brunthavan:</b> “PM.” appears in doubles; “M.” in singles.</li>
+                    <li><b>Cross-category names:</b> Dinesh, Tenojan, Vibulan and Piruthevi appear with initials elsewhere.</li>
                     <li><b>Mixed entries:</b> initials vary for Keerthana, Venuja, Darmi and Thuvaaragan.</li>
                     <li><b>Possible matches:</b> Janarthan / B.Janarthanan and Rajika / T.Rajigaa.</li>
                   </ul>
