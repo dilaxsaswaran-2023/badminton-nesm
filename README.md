@@ -4,7 +4,8 @@ Production organizer-facing knockout draw ledger for the NESM 2026 Badminton Cha
 
 ## Run locally
 
-Node.js 22.13 or newer is required.
+Vinext requires Node.js 22.13 or newer. The npm scripts automatically use the
+compatible runtime, including when the terminal itself is currently on Node 20.
 
 ```bash
 npm install
