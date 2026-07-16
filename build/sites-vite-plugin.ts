@@ -29,6 +29,15 @@ export function sites(): Plugin {
       const hostingConfig = resolve(root, ".openai", "hosting.json");
       const drizzleSource = resolve(root, "drizzle");
 
+      // Vinext mirrors public files into both client and server outputs. Sites
+      // serves public assets from the client bundle, so omit the duplicate
+      // server copies from the Worker module upload.
+      await rm(resolve(root, "dist", "server", "og.png"), { force: true });
+      await rm(resolve(root, "dist", "server", "data"), {
+        recursive: true,
+        force: true,
+      });
+
       await rm(outputDirectory, { recursive: true, force: true });
       await mkdir(outputDirectory, { recursive: true });
 
