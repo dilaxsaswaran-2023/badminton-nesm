@@ -116,7 +116,7 @@ export function createBracket(
               : source.participant2;
           return actual;
         }
-        return { type: "placeholder", label: `Winner of ${source.id}` };
+        return { type: "placeholder", label: source.id };
       };
       const matchNumber = index / 2 + 1;
       matches.push({

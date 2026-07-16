@@ -7,7 +7,7 @@ export function ArchivalHeader() {
         <span className="monogram-year">2026</span>
       </div>
       <div className="title-block">
-        <p className="eyebrow">Northern Eastern Sports Meet · Championship Office</p>
+        <p className="eyebrow">Nothern Engineers Shuttle Masters · Championship Office</p>
         <h1>NESM 2026 Badminton Championship</h1>
         <div className="title-rule" aria-hidden="true">
           <span />
