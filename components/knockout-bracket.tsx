@@ -131,7 +131,6 @@ export function KnockoutBracket({ category, result, printMode = false, reveal = 
           })}
         </div>
       </div>
-      {printMode && <footer className="print-footer">NESM 2026 · Official Knockout Draw</footer>}
-    </section>
+</section>
   );
 }
