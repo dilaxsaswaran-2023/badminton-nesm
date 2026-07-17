@@ -29,7 +29,7 @@ describe("knockout draw logic", () => {
       "men-over-40-doubles": 5,
       "womens-singles": 5,
       "womens-doubles": 5,
-      "mixed-doubles": 10,
+      "mixed-doubles": 11,
     };
     for (const category of categories) {
       const csv = readFileSync(join(process.cwd(), "public", category.file), "utf8");

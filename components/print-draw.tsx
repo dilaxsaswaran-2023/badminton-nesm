@@ -11,7 +11,7 @@ export function PrintDraw({ categories, draws }: Props) {
   return (
     <div className="print-only print-document" aria-hidden="true">
       {generated.map(({ category }) => (
-        <article className="print-page" key={category.id}>
+        <article className={`print-page print-page--${category.id}`} key={category.id}>
           <KnockoutBracket category={category} result={draws[category.id]} printMode />
         </article>
       ))}

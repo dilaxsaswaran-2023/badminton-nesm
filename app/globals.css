@@ -320,5 +320,16 @@ button:focus-visible, summary:focus-visible, [tabindex="0"]:focus-visible {
   .match-slot { min-height: 9mm; padding: 2mm 3mm; font-size: 13.5pt; }
   .match-label { min-height: 6mm; font-size: 11pt; }
   .advance-note { font-size: 9pt; }
+  .print-page--mens-singles .round-matches,
+  .print-page--mens-doubles .round-matches { height: 220mm; }
+  .print-page--mens-singles .match-card { min-height: 11mm; }
+  .print-page--mens-singles .match-label { min-height: 2.8mm; padding: .35mm 1.2mm; font-size: 7.5pt; }
+  .print-page--mens-singles .match-slot { min-height: 4.1mm; padding: .45mm 1.2mm; font-size: 9pt; line-height: 1; }
+  .print-page--mens-singles .match-slot.placeholder,
+  .print-page--mens-singles .match-slot.bye { font-size: 8pt; }
+  .print-page--mens-singles .match-slot small,
+  .print-page--mens-singles .advance-note { display: none; }
+  .print-page--mens-singles .match-position,
+  .print-page--mens-doubles .match-position { padding-block: 1mm; }
   .print-footer { position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-size: 10.5pt; letter-spacing: .12em; text-transform: uppercase; }
 }

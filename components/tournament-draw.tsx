@@ -30,6 +30,14 @@ export function TournamentDraw() {
       .then((loaded) => {
         setCategories(loaded);
         setActiveId(loaded[0]?.category.id ?? "");
+        setDraws((current) =>
+          Object.fromEntries(
+            Object.entries(current).filter(([categoryId, draw]) => {
+              const roster = loaded.find(({ category }) => category.id === categoryId);
+              return !roster || roster.entrants.length === draw.entrantCount;
+            }),
+          ),
+        );
       })
       .catch((error: unknown) => {
         setLoadError(error instanceof Error ? error.message : "Tournament data could not be loaded.");
