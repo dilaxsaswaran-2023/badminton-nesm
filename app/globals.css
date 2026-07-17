@@ -149,6 +149,9 @@ button:focus-visible, summary:focus-visible, [tabindex="0"]:focus-visible {
 .reset-menu > div button:hover { background: rgba(109,39,35,.06); }
 
 .pre-draw-layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 35px; align-items: start; }
+.advisory-panel { margin-top: 9px; }
+.advisory-toggle { display: inline-flex; align-items: center; gap: 8px; width: 100%; justify-content: center; padding: 10px 13px; color: var(--oxblood); border: 1px solid rgba(169,130,69,.56); background: rgba(222,204,163,.22); font: 700 10px Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.advisory-toggle:hover { background: rgba(222,204,163,.4); }
 .entrant-ledger { min-width: 0; }
 .ledger-heading-row { display: flex; align-items: end; justify-content: space-between; gap: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--ink); }
 .ledger-heading-row h2 { margin: 0; font-size: 22px; font-weight: 500; }
@@ -163,7 +166,7 @@ button:focus-visible, summary:focus-visible, [tabindex="0"]:focus-visible {
 .pending-label { grid-column: 3; grid-row: 1 / span 2; padding: 3px 5px; color: #735118; background: #e9d6a6; font: 700 8px Arial, sans-serif; text-transform: uppercase; letter-spacing: .06em; }
 .ledger-note { margin: 14px 0 0; color: var(--muted-ink); font-size: 12px; font-style: italic; }
 
-.review-advisory { margin-top: 9px; padding: 19px; color: #3d3020; border: 1px solid rgba(169,130,69,.56); background: rgba(222, 204, 163, .22); box-shadow: 4px 5px 0 rgba(169,130,69,.1); transform: rotate(.35deg); }
+.review-advisory { margin-top: 10px; padding: 19px; color: #3d3020; border: 1px solid rgba(169,130,69,.56); background: rgba(222, 204, 163, .22); box-shadow: 4px 5px 0 rgba(169,130,69,.1); transform: rotate(.35deg); }
 .advisory-heading { display: flex; gap: 10px; align-items: center; color: var(--oxblood); padding-bottom: 11px; border-bottom: 1px solid rgba(169,130,69,.4); }
 .advisory-heading span { font: 700 8px Arial, sans-serif; text-transform: uppercase; letter-spacing: .2em; }
 .advisory-heading h3 { margin: 3px 0 0; font-size: 17px; font-weight: 500; }

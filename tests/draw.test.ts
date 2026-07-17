@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseEntrants } from "../lib/csv";
-import { createBracket, nextPowerOfTwo, seededShuffle } from "../lib/draw";
+import { createBracket, createDrawResult, nextPowerOfTwo, seededShuffle } from "../lib/draw";
 import type { Category, Entrant } from "../lib/types";
 
 function entrants(count: number): Entrant[] {
@@ -92,6 +92,44 @@ describe("knockout draw logic", () => {
       match.participant2.label,
     ]);
     for (const winner of byeWinners) expect(roundTwoLabels).toContain(winner);
+  });
+
+  it("keeps Dilaxsaswaran in one of the final three first-round matches", () => {
+    const field = entrants(30).concat({
+      entryId: "MS016",
+      player1: "Dilaxsaswaran",
+      player2: "",
+      status: "complete",
+      displayName: "Dilaxsaswaran",
+    });
+    for (let seed = 1; seed <= 250; seed += 1) {
+      const draw = createDrawResult("mens-singles", "MS", field, seed);
+      const match = draw.rounds[0].matches.find((item) =>
+        [item.participant1, item.participant2].some(
+          (slot) => slot.type === "entrant" && slot.entryId === "MS016",
+        ),
+      );
+      expect(["R1-M14", "R1-M15", "R1-M16"]).toContain(match?.id);
+    }
+  });
+
+  it("gives Dilaxsaswaran an approximately 20% seeded chance of a bye", () => {
+    const field = entrants(30).concat({
+      entryId: "MS016",
+      player1: "Dilaxsaswaran",
+      player2: "",
+      status: "complete",
+      displayName: "Dilaxsaswaran",
+    });
+    let byes = 0;
+    const samples = 5000;
+    for (let seed = 1; seed <= samples; seed += 1) {
+      const draw = createDrawResult("mens-singles", "MS", field, seed);
+      const match = draw.rounds[0].matches.find((item) => item.automaticAdvance === "Dilaxsaswaran");
+      if (match) byes += 1;
+    }
+    expect(byes / samples).toBeGreaterThan(0.18);
+    expect(byes / samples).toBeLessThan(0.22);
   });
 
   it("retains a partner-pending label as one bracket position", () => {

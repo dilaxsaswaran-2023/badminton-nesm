@@ -17,17 +17,13 @@ export function DrawAnimation({ active, entrants, onComplete }: Props) {
   useEffect(() => {
     if (!active) return;
     const reset = window.setTimeout(() => setStep(0), 0);
-    if (reducedMotion) {
-      onComplete();
-      return () => window.clearTimeout(reset);
-    }
-    const first = window.setTimeout(() => setStep(1), 560);
-    const second = window.setTimeout(() => setStep(2), 1120);
-    const complete = window.setTimeout(onComplete, 1750);
+    const first = reducedMotion ? undefined : window.setTimeout(() => setStep(1), 1000);
+    const second = reducedMotion ? undefined : window.setTimeout(() => setStep(2), 2000);
+    const complete = window.setTimeout(onComplete, 3000);
     return () => {
       window.clearTimeout(reset);
-      window.clearTimeout(first);
-      window.clearTimeout(second);
+      if (first !== undefined) window.clearTimeout(first);
+      if (second !== undefined) window.clearTimeout(second);
       window.clearTimeout(complete);
     };
   }, [active, onComplete, reducedMotion]);
@@ -55,7 +51,7 @@ export function DrawAnimation({ active, entrants, onComplete }: Props) {
                     rotate: [0, index % 2 ? 11 : -9, index % 3 ? -5 : 7, 0],
                     filter: ["blur(0px)", "blur(1.5px)", "blur(.5px)", "blur(0px)"],
                   }}
-                  transition={{ duration: 1.45, delay: index * 0.025, ease: "easeInOut" }}
+                  transition={{ duration: 2.7, delay: index * 0.025, ease: "easeInOut" }}
                 >
                   {entrant.displayName}
                 </motion.span>

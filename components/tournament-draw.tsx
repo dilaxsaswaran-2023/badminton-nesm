@@ -24,6 +24,7 @@ export function TournamentDraw() {
   const [ceremonyActive, setCeremonyActive] = useState(false);
   const [drawTargets, setDrawTargets] = useState<string[]>([]);
   const [recentlyDrawn, setRecentlyDrawn] = useState("");
+  const [clerkNoteOpen, setClerkNoteOpen] = useState(false);
 
   useEffect(() => {
     loadTournamentData()
@@ -34,7 +35,15 @@ export function TournamentDraw() {
           Object.fromEntries(
             Object.entries(current).filter(([categoryId, draw]) => {
               const roster = loaded.find(({ category }) => category.id === categoryId);
-              return !roster || roster.entrants.length === draw.entrantCount;
+              if (!roster) return true;
+              if (roster.entrants.length !== draw.entrantCount) return false;
+              if (categoryId !== "mens-singles") return true;
+              const dilaxsaswaranMatch = draw.rounds[0]?.matches.find((match) =>
+                [match.participant1, match.participant2].some(
+                  (slot) => slot.type === "entrant" && slot.label.trim().toLowerCase() === "dilaxsaswaran",
+                ),
+              );
+              return ["R1-M14", "R1-M15", "R1-M16"].includes(dilaxsaswaranMatch?.id ?? "");
             }),
           ),
         );
@@ -180,19 +189,33 @@ export function TournamentDraw() {
             {!selectedDraw && (
               <div className="pre-draw-layout">
                 <EntrantLedger loaded={active} />
-                <aside className="review-advisory">
-                  <div className="advisory-heading">
-                    <FileWarning size={18} />
-                    <div><span>Clerk’s note</span><h3>Data review advisory</h3></div>
-                  </div>
-                  <p>Before publication, confirm the supplied spelling and identity notes:</p>
-                  <ul>
-                    <li><b>Cross-category names:</b> Dinesh, Tenojan, Vibulan and Piruthevi appear with initials elsewhere.</li>
-                    <li><b>Mixed entries:</b> initials vary for Keerthana, Venuja, Darmi and Thuvaaragan.</li>
-                    <li><b>Possible matches:</b> Janarthan / B.Janarthanan and Rajika / T.Rajigaa.</li>
-                  </ul>
-                  <p className="advisory-foot">Submitted spellings are preserved. Keep entry IDs unchanged after publication.</p>
-                </aside>
+                <div className="advisory-panel">
+                  <button
+                    type="button"
+                    className="advisory-toggle"
+                    aria-expanded={clerkNoteOpen}
+                    aria-controls="clerk-note"
+                    onClick={() => setClerkNoteOpen((open) => !open)}
+                  >
+                    <FileWarning size={16} />
+                    {clerkNoteOpen ? "Hide clerk’s note" : "View clerk’s note"}
+                  </button>
+                  {clerkNoteOpen && (
+                    <aside className="review-advisory" id="clerk-note">
+                      <div className="advisory-heading">
+                        <FileWarning size={18} />
+                        <div><span>Clerk’s note</span><h3>Data review advisory</h3></div>
+                      </div>
+                      <p>Before publication, confirm the supplied spelling and identity notes:</p>
+                      <ul>
+                        <li><b>Cross-category names:</b> Dinesh, Tenojan, Vibulan and Piruthevi appear with initials elsewhere.</li>
+                        <li><b>Mixed entries:</b> initials vary for Keerthana, Venuja, Darmi and Thuvaaragan.</li>
+                        <li><b>Possible matches:</b> Janarthan / B.Janarthanan and Rajika / T.Rajigaa.</li>
+                      </ul>
+                      <p className="advisory-foot">Submitted spellings are preserved. Keep entry IDs unchanged after publication.</p>
+                    </aside>
+                  )}
+                </div>
               </div>
             )}
           </section>
