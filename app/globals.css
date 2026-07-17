@@ -296,15 +296,14 @@ button:focus-visible, summary:focus-visible, [tabindex="0"]:focus-visible {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-@page { size: A3 landscape; margin: 10mm; }
+@page { size: 420mm 330mm; margin: 10mm; }
 @page mens-singles { size: 420mm 500mm; margin: 10mm; }
-@page mens-doubles { size: 420mm 330mm; margin: 10mm; }
 
 @media print {
   html, body { background: #fff !important; color: #111; }
   .no-print, .site-shell, .ceremony-overlay { display: none !important; }
   .print-only { display: block !important; }
-  .print-page { page-break-after: always; break-after: page; min-height: 270mm; }
+  .print-page { page-break-after: always; break-after: page; min-height: 310mm; }
   .print-page:last-child { page-break-after: auto; }
   .bracket-result { padding: 0; }
   .bracket-document-head { grid-template-columns: 1fr; padding: 2mm 0 3mm; border-top: none; border-bottom: 2px solid #333; }
@@ -317,14 +316,12 @@ button:focus-visible, summary:focus-visible, [tabindex="0"]:focus-visible {
   .bracket-grid { min-width: 0; gap: 6mm; grid-template-columns: repeat(var(--round-count, 5), 52mm); }
   .round-column { min-width: 0; }
   .round-column h3 { font-size: 13.5pt; padding: 2mm; margin-bottom: 2mm; }
-  .round-matches { height: 205mm; grid-template-rows: repeat(var(--first-round-count), minmax(7.5mm, auto)); }
+  .round-matches { height: 270mm; grid-template-rows: repeat(var(--first-round-count), minmax(7.5mm, auto)); }
   .match-card { min-height: 16.5mm; background: white; box-shadow: none; }
   .match-slot { min-height: 9mm; padding: 2mm 3mm; font-size: 13.5pt; }
   .match-label { min-height: 6mm; font-size: 11pt; }
   .advance-note { font-size: 9pt; }
   .print-page--mens-singles { page: mens-singles; min-height: 480mm; }
   .print-page--mens-singles .round-matches { height: 440mm; }
-  .print-page--mens-doubles { page: mens-doubles; min-height: 310mm; }
-  .print-page--mens-doubles .round-matches { height: 270mm; }
   .print-footer { position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-size: 10.5pt; letter-spacing: .12em; text-transform: uppercase; }
 }
